@@ -1,0 +1,27 @@
+{
+    "name": "blue-ally-cms/blue-ally-cms",
+    "description": "blue-ally-cms/blue-ally-cms",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.6.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "BlueAllyCms\\BlueAllyCms",
+        "label": {
+            "de-DE": "Skeleton plugin",
+            "en-GB": "Skeleton plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "BlueAllyCms\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BlueAllyCms\\Tests\\": "tests/"
+        }
+    }
+}

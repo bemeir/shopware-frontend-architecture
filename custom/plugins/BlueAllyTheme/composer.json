@@ -1,0 +1,18 @@
+{
+  "name": "swag/theme-skeleton",
+  "description": "Theme skeleton plugin",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "BlueAllyTheme\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "BlueAllyTheme\\BlueAllyTheme",
+    "label": {
+      "de-DE": "Theme BlueAllyTheme plugin",
+      "en-GB": "Theme BlueAllyTheme plugin"
+    }
+  }
+}

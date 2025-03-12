@@ -1,0 +1,32 @@
+{% block sw_cms_el_config_multi_item_banner %}
+	<div class="sw-cms-el-config-multi-item-banner">
+		<sw-button variant="primary" @click="addItem">
+			Add Item
+		</sw-button>
+
+		<div
+			v-for="(item, index) in items" :key="index" class="sw-cms-el-config-multi-item-banner__item">
+			<!-- Title -->
+			<sw-text-field
+			:value="getTitle(index)" label="Item Title" placeholder="Enter title..." @update:value="value => setTitle(index, value)"/>
+
+			<!-- Content -->
+			<sw-textarea-field :value="getContent(index)" label="Item Content" placeholder="Enter content..." @update:value="value => setContent(index, value)"/>
+
+
+			<sw-colorpicker :value="getBackground(index)" label="Background" coloroutput="auto" :alpha="true" :colorlabels="true" zindex="100" @update:value="val => setBackground(index, val)"/>
+
+
+			<sw-media-upload-v2 variant="regular" :upload-tag="getUploadTag(index)" :source="getPreviewSource(index)" :allow-multi-select="false" :default-folder="cmsPageState.pageEntityName" :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')" @media-upload-sidebar-open="() => onOpenMediaModal(index)" @media-upload-remove-image="() => onImageRemove(index)"/>
+
+			<sw-upload-listener :upload-tag="getUploadTag(index)" auto-upload @media-upload-finish="params => onImageUpload(params, index)"/>
+
+			<sw-button variant="danger" @click="removeItem(index)">
+				Remove
+			</sw-button>
+		</div>
+
+
+		<sw-media-modal-v2 v-if="mediaModalIsOpen" variant="full" :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')" :entity-context="cmsPageState.pageEntityName" :allow-multi-select="false" :initial-folder-id="cmsPageState.defaultMediaFolderId" @media-modal-selection-change="onSelectionChanges" @modal-close="onCloseModal"/>
+	</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% block sw_cms_el_multi_item_banner %}
+	<template>
+		<div class="sw-cms-el-multi-item-banner">
+			<div v-for="(item, index) in items" :key="index" class="sw-cms-el-multi-item-banner__preview-item" :style="{ backgroundColor: item.background }">
+				<strong>{{ item.title }}</strong>
+				<p>{{ item.content }}</p>
+
+				<!-- Show real image if present -->
+				<div v-if="item.image">
+					<img v-if="getMediaUrl(index)" :src="getMediaUrl(index)" alt="Preview" style="max-width: 150px;">
+					<p v-else>
+						[No real-time URL found yet]
+					</p>
+				</div>
+			</div>
+		</div>
+	</template>
+{% endblock %}
