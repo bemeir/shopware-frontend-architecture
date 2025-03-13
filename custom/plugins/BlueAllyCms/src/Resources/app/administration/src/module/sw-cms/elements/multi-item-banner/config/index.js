@@ -1,4 +1,6 @@
 import template from './sw-cms-el-config-multi-item-banner.html.twig';
+import './sw-cms-el-config-multi-item-banner.scss';
+
 const { Mixin } = Shopware;
 
 Shopware.Component.register('sw-cms-el-config-multi-item-banner', {
@@ -12,6 +14,17 @@ Shopware.Component.register('sw-cms-el-config-multi-item-banner', {
         return {
             mediaModalIsOpen: false,
             currentEditIndex: null, // which item is being edited?
+            positionOptions: [
+                { label: 'Top Left', value: 'top-left' },
+                { label: 'Top Center', value: 'top-center' },
+                { label: 'Top Right', value: 'top-right' },
+                { label: 'Middle Left', value: 'middle-left' },
+                { label: 'Middle Center', value: 'middle-center' },
+                { label: 'Middle Right', value: 'middle-right' },
+                { label: 'Bottom Left', value: 'bottom-left' },
+                { label: 'Bottom Center', value: 'bottom-center' },
+                { label: 'Bottom Right', value: 'bottom-right' },
+            ],
         };
     },
 
@@ -45,7 +58,7 @@ Shopware.Component.register('sw-cms-el-config-multi-item-banner', {
                 title: '',
                 content: '',
                 image: null,
-                background: '#ffffff',
+                textColor: '#ffffff',
             });
             this.$emit('element-update', this.element);
         },
@@ -63,11 +76,19 @@ Shopware.Component.register('sw-cms-el-config-multi-item-banner', {
         getContent(index) {
             return this.items[index].content;
         },
-        getBackground(index) {
-            return this.items[index].background;
+        getTextColor(index) {
+            return this.items[index].textColor;
         },
         getImage(index) {
             return this.items[index].image; // ID
+        },
+
+        getTitleHeading(index) {
+            return this.items[index].titleHeading;
+        },
+
+        getPosition(index) {
+            return this.items[index].position;
         },
 
         // SETTERS
@@ -79,8 +100,19 @@ Shopware.Component.register('sw-cms-el-config-multi-item-banner', {
             this.items[index].content = val;
             this.$emit('element-update', this.element);
         },
-        setBackground(index, val) {
-            this.items[index].background = val;
+        setTextColor(index, val) {
+            this.items[index].textColor = val;
+            this.$emit('element-update', this.element);
+        },
+
+        setTitleHeading(index, val) {
+            this.items[index].titleHeading = val;
+            this.$emit('element-update', this.element);
+        },
+
+        setPosition(index, val) {
+            console.log('running');
+            this.items[index].position = val;
             this.$emit('element-update', this.element);
         },
 

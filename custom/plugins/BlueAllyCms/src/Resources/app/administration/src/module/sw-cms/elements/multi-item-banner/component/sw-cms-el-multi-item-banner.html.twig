@@ -1,16 +1,23 @@
 {% block sw_cms_el_multi_item_banner %}
 	<template>
 		<div class="sw-cms-el-multi-item-banner">
-			<div v-for="(item, index) in items" :key="index" class="sw-cms-el-multi-item-banner__preview-item" :style="{ backgroundColor: item.background }">
-				<strong>{{ item.title }}</strong>
-				<p>{{ item.content }}</p>
+			<div v-for="(item, index) in items" :key="index" class="sw-cms-el-multi-item-banner__preview-item">
+				<div
+					class="banner-image-wrapper">
+					<!-- Only show the img if we have a valid URL -->
+					<img
+					v-if="item.image && getMediaUrl(index)" :src="getMediaUrl(index)" alt="Preview" class="banner-image"/>
+					<!-- Example fallback if no image is found -->
+					<div v-else class="banner-image--placeholder">
+						[Please add an image]
+					</div>
 
-				<!-- Show real image if present -->
-				<div v-if="item.image">
-					<img v-if="getMediaUrl(index)" :src="getMediaUrl(index)" alt="Preview" style="max-width: 150px;">
-					<p v-else>
-						[No real-time URL found yet]
-					</p>
+					<div :class="item.position" class="banner-content">
+						<component :style="{ color: item.textColor }" :is="item.titleHeading">
+							{{ item.title }}
+						</component>
+						<p :style="{ color: item.textColor }">{{ item.content }}</p>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -14,16 +14,13 @@ Shopware.Service('cmsService').registerCmsElement({
             // We'll store an array of items; each has title, content, image, background, etc.
             value: [
                 {
-                    title: 'Item 1',
-                    content: 'Hello',
+                    title: 'Lorem ipsum #1',
+                    content:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed egestas tortor. Proin facilisis faucibus dui a congue. Fusce porta odio vitae lectus feugiat faucibus.',
                     image: null,
-                    background: '#ffffff',
-                },
-                {
-                    title: 'Item 2',
-                    content: 'World',
-                    image: null,
-                    background: '#f5f5f5',
+                    textColor: '#ffffff',
+                    titleHeading: 'h1',
+                    position: 'middle-center', // <--- new property
                 },
             ],
         },

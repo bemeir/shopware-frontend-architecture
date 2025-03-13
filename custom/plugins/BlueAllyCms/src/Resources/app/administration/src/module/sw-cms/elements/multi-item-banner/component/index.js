@@ -1,6 +1,6 @@
 // src/Resources/app/administration/src/module/sw-cms/elements/multi-item-banner/component/index.js
 import template from './sw-cms-el-multi-item-banner.html.twig';
-
+import './sw-cms-el-multi-item-banner.scss';
 const { Mixin } = Shopware;
 
 Shopware.Component.register('sw-cms-el-multi-item-banner', {

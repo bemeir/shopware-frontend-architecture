@@ -1,0 +1,32 @@
+{% block cms_element_multi_item_banner %}
+	{# Get the items from the element configuration #}
+	{# This is the same as the "items" array in the Vue component #}
+
+	{% set items = element.config.items.value %}
+
+		<div class="cms-element-multi-item-banner"> {% for item in items %}
+			<div
+				class="banner-image-wrapper">
+				{# Check if "image" is a direct string or a media object #}
+				{% set mediaCollection = searchMedia([item.image], context.context) %}
+				{% set bannerImage = mediaCollection.get(item.image) %}
+				{% if item.image %}
+					<img src="{{ bannerImage.path }}" alt="{{ item.title }}">
+				{% else %}
+					<div class="banner-image--placeholder">
+						[No image defined]
+					</div>
+				{% endif %}
+
+				{# Add the overlay. We apply the position as a class #}
+				<div class="banner-content {{ item.position }}" style="color: {{ item.textColor }}">
+					{% set heading = item.titleHeading|default('h2') %}
+					<{{heading}}>
+						{{ item.title }}
+					</{{heading}}>
+					<p>{{ item.content }}</p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

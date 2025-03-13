@@ -1,8 +1,5 @@
 {% block sw_cms_el_config_multi_item_banner %}
 	<div class="sw-cms-el-config-multi-item-banner">
-		<sw-button variant="primary" @click="addItem">
-			Add Item
-		</sw-button>
 
 		<div
 			v-for="(item, index) in items" :key="index" class="sw-cms-el-config-multi-item-banner__item">
@@ -10,23 +7,40 @@
 			<sw-text-field
 			:value="getTitle(index)" label="Item Title" placeholder="Enter title..." @update:value="value => setTitle(index, value)"/>
 
+			<!-- Title heading -->
+			<sw-text-field
+			:value="getTitleHeading(index)" label="Title heading" placeholder="Enter title heading h1-h6..." @update:value="value => setTitleHeading(index, value)"/>
+
 			<!-- Content -->
-			<sw-textarea-field :value="getContent(index)" label="Item Content" placeholder="Enter content..." @update:value="value => setContent(index, value)"/>
+			<sw-textarea-field
+			:value="getContent(index)" label="Item Content" placeholder="Enter content..." @update:value="value => setContent(index, value)"/>
 
+			<!-- Position: top-left, top-center, etc. -->
+			<sw-single-select
+			label="Overlay position" :options="positionOptions" :value="getPosition(index)" placeholder="Select position..." @update:value="value => setPosition(index, value)"/>
 
-			<sw-colorpicker :value="getBackground(index)" label="Background" coloroutput="auto" :alpha="true" :colorlabels="true" zindex="100" @update:value="val => setBackground(index, val)"/>
+			<!-- Color picker for content -->
+			<sw-colorpicker
+			:value="getTextColor(index)" label="Text color" coloroutput="auto" :alpha="true" :colorlabels="true" zindex="100" @update:value="val => setTextColor(index, val)"/>
 
-
+			<!-- Media upload -->
 			<sw-media-upload-v2 variant="regular" :upload-tag="getUploadTag(index)" :source="getPreviewSource(index)" :allow-multi-select="false" :default-folder="cmsPageState.pageEntityName" :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')" @media-upload-sidebar-open="() => onOpenMediaModal(index)" @media-upload-remove-image="() => onImageRemove(index)"/>
 
-			<sw-upload-listener :upload-tag="getUploadTag(index)" auto-upload @media-upload-finish="params => onImageUpload(params, index)"/>
+			<sw-upload-listener
+			:upload-tag="getUploadTag(index)" auto-upload @media-upload-finish="params => onImageUpload(params, index)"/>
 
-			<sw-button variant="danger" @click="removeItem(index)">
+			<!-- Remove button -->
+			<sw-button variant="danger" @click="removeItem(index)" class="remove-item">
 				Remove
 			</sw-button>
 		</div>
+		<!-- Modal media upload -->
+		<sw-media-modal-v2
+		v-if="mediaModalIsOpen" variant="full" :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')" :entity-context="cmsPageState.pageEntityName" :allow-multi-select="false" :initial-folder-id="cmsPageState.defaultMediaFolderId" @media-modal-selection-change="onSelectionChanges" @modal-close="onCloseModal"/>
 
-
-		<sw-media-modal-v2 v-if="mediaModalIsOpen" variant="full" :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')" :entity-context="cmsPageState.pageEntityName" :allow-multi-select="false" :initial-folder-id="cmsPageState.defaultMediaFolderId" @media-modal-selection-change="onSelectionChanges" @modal-close="onCloseModal"/>
+		<!-- Add another item-->
+		<sw-button variant="primary" @click="addItem" class="add-item">
+			Add Item
+		</sw-button>
 	</div>
 {% endblock %}

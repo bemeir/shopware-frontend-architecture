@@ -1,0 +1,8 @@
+{% block cms_block_blueally_banner %}
+	{% set element = block.slots.getSlot('content') %}
+	<div class="p-0" data-cms-element-id="{{ element.id }}">
+		{% block cms_block_blueally_banner_inner %}
+			{% sw_include "@Storefront/storefront/element/cms-element-multi-item-banner.html.twig" ignore missing %}
+		{% endblock %}
+	</div>
+{% endblock %}

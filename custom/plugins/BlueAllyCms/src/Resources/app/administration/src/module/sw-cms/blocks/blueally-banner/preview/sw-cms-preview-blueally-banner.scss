@@ -1,6 +1,41 @@
-.custom-block-preview {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 20px;
-    padding: 15px;
+.sw_cms_block_blueally_banner_preview {
+    /* Just an example if you want each item to take up full width, etc. */
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.banner-image-wrapper {
+    position: relative;
+    width: 100%;
+    /* If you want a fixed height or auto height, adapt this as needed */
+    height: auto;
+}
+
+/* The image itself should be displayed as a block to avoid inline spacing */
+.banner-image {
+    display: block;
+    width: 100%;
+    height: auto; /* Keep aspect ratio */
+}
+
+/* Fallback placeholder if no image is found */
+.banner-image--placeholder {
+    width: 100%;
+    height: 200px; /* example placeholder height */
+    background-color: #ccc;
+}
+
+/* The content is absolutely positioned on top of the image */
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* You can style text color, background, etc. here */
+    color: #fff;
+    /* Example background to improve readability:
+       background-color: rgba(0, 0, 0, 0.5); */
+    padding: 10px;
+    max-width: 50%; /* or adapt as needed */
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
