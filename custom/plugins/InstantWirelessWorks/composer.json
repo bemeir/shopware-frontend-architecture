@@ -1,0 +1,18 @@
+{
+  "name": "swag/theme-skeleton",
+  "description": "Theme skeleton plugin",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "InstantWirelessWorks\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "InstantWirelessWorks\\InstantWirelessWorks",
+    "label": {
+      "de-DE": "Theme InstantWirelessWorks plugin",
+      "en-GB": "Theme InstantWirelessWorks plugin"
+    }
+  }
+}
