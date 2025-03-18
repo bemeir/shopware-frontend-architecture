@@ -18,5 +18,58 @@
         "app/storefront/dist/storefront/js/instant-wireless-works/instant-wireless-works.js"
     ],
     "asset": ["@Storefront", "@BlueAllyTheme", "app/storefront/src/assets"],
-    "configInheritance": ["@Storefront", "@BlueAllyTheme"]
+    "configInheritance": ["@Storefront", "@BlueAllyTheme"],
+    "config": {
+        "blocks": {
+            "themeColors": {
+                "label": {
+                    "en-GB": "Theme colours",
+                    "de-DE": "Theme-Farben"
+                }
+            },
+            "typography": {
+                "label": {
+                    "en-GB": "Typography",
+                    "de-DE": "Typografie"
+                }
+            },
+            "eCommerce": {
+                "label": {
+                    "en-GB": "E-Commerce",
+                    "de-DE": "E-Commerce"
+                }
+            },
+            "statusColors": {
+                "label": {
+                    "en-GB": "Status messages",
+                    "de-DE": "Status-Ausgaben"
+                }
+            },
+            "media": {
+                "label": {
+                    "en-GB": "Media",
+                    "de-DE": "Medien"
+                }
+            },
+            "unordered": {
+                "label": {
+                    "en-GB": "Misc",
+                    "de-DE": "Sonstige"
+                }
+            }
+        },
+        "fields": {
+            "sw-color-brand-primary": {
+                "label": {
+                    "en-GB": "Primary colour",
+                    "de-DE": "Primärfarbe"
+                },
+                "type": "color",
+                "value": "#0042a0",
+                "editable": true,
+                "block": "themeColors",
+                "order": 100
+            }
+        }
+    }
 }
