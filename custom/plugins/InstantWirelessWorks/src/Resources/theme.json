@@ -4,18 +4,19 @@
     "views": [
         "@Storefront",
         "@Plugins",
-        "@InstantWirelessWorks",
-        "@BlueAllyTheme"
+        "@BlueAllyTheme",
+        "@InstantWirelessWorks"
     ],
     "style": [
         "app/storefront/src/scss/overrides.scss",
-        "@Storefront",
+        "@BlueAllyTheme",
         "app/storefront/src/scss/base.scss"
     ],
     "script": [
         "@Storefront",
+        "@BlueAllyTheme",
         "app/storefront/dist/storefront/js/instant-wireless-works/instant-wireless-works.js"
     ],
-    "asset": ["@Storefront", "app/storefront/src/assets"],
-    "parentTheme": "BlueAllyTheme"
+    "asset": ["@Storefront", "@BlueAllyTheme", "app/storefront/src/assets"],
+    "configInheritance": ["@Storefront", "@BlueAllyTheme"]
 }
